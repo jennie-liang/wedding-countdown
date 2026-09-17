@@ -10,6 +10,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="剪綵儀式倒數">
+<meta name="theme-color" content="#e3e9ec">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
 <style>
   :root {
     --plum-top: #e3e9ec;
@@ -31,6 +35,8 @@
 
   html, body {
     height: 100%;
+    overscroll-behavior: none;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -38,6 +44,15 @@
     background: var(--plum-top);
     font-family: 'Manrope', system-ui, sans-serif;
     color: var(--ink);
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .enter-btn, .fire-btn, .link-btn, .todo-add, .todo-remove, .grabber-wrap {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   .frame {
