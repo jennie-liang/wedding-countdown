@@ -1,7 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>跨種族爬蟲整合實驗剪綵儀式倒數</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="剪綵儀式倒數">
 <style>
   :root {
     --plum-top: #e3e9ec;
@@ -30,23 +38,19 @@
     background: var(--plum-top);
     font-family: 'Manrope', system-ui, sans-serif;
     color: var(--ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-block: max(24px, env(safe-area-inset-top, 0px)) max(24px, env(safe-area-inset-bottom, 0px));
   }
 
   .frame {
     position: relative;
     width: 100%;
-    max-width: 430px;
-    height: min(880px, 92vh);
-    border-radius: 44px;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
     background:
       radial-gradient(120% 70% at 50% -10%, rgba(255, 185, 120, 0.18), transparent 60%),
       linear-gradient(180deg, var(--plum-top) 0%, var(--plum-bottom) 100%);
-    box-shadow: 0 30px 80px -20px rgba(60, 75, 84, 0.35);
   }
 
   .glow {
@@ -428,6 +432,8 @@
     padding: 8px 0 4px;
   }
 </style>
+</head>
+<body>
 
 <div class="frame">
   <div class="glow glow--a"></div>
@@ -455,7 +461,7 @@
       </div>
     </div>
 
-    <button class="enter-btn" type="button" id="enterBtn">我要生氣</button>
+    <button class="enter-btn" type="button" id="enterBtn">我現在不爽</button>
   </div>
 
   <div class="sheet" id="sheet">
@@ -644,3 +650,5 @@
     })();
   })();
 </script>
+</body>
+</html>
