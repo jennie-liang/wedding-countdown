@@ -340,7 +340,7 @@
     border: 1.5px solid rgba(63, 75, 83, 0.14);
     background: #ffffff;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--ink);
   }
 
@@ -492,6 +492,10 @@
 </div>
 
 <script>
+  // iOS Safari only applies :active (tap) styles when some element has a
+  // touch listener bound; this one enables tap feedback across the page.
+  document.addEventListener('touchstart', function () {}, { passive: true });
+
   (function () {
     var target = new Date(2026, 10, 22, 0, 0, 0);
     var els = {
