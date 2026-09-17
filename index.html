@@ -192,9 +192,29 @@
   }
 
   .fire-wrap {
+    position: relative;
     display: flex;
     justify-content: center;
     margin-bottom: 26px;
+  }
+
+  .flame-particle {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    pointer-events: none;
+    animation: riseUp 0.9s ease-out forwards;
+  }
+
+  @keyframes riseUp {
+    0% {
+      transform: translate(-50%, 0) scale(0.6);
+      opacity: 0.95;
+    }
+    100% {
+      transform: translate(calc(-50% + var(--dx, 0px)), -130px) scale(1.15);
+      opacity: 0;
+    }
   }
 
   .fire-btn {
@@ -231,7 +251,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .fire-btn, .fire-btn .emoji { animation: none; }
+    .fire-btn, .fire-btn .emoji, .flame-particle { animation: none; }
     .sheet { transition: none; }
   }
 
@@ -545,6 +565,30 @@
     document.getElementById('enterBtn').addEventListener('click', function () {
       sheet.classList.add('is-open');
     });
+
+    // Burst a few flames up from under the fire button on tap
+    (function () {
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var fireBtn = document.querySelector('.fire-btn');
+      var fireWrap = document.querySelector('.fire-wrap');
+      if (!fireBtn || !fireWrap || reduceMotion) return;
+
+      fireBtn.addEventListener('click', function () {
+        var count = 6;
+        for (var i = 0; i < count; i++) {
+          var particle = document.createElement('span');
+          particle.className = 'flame-particle';
+          particle.textContent = '🔥';
+          particle.style.setProperty('--dx', (Math.random() * 90 - 45) + 'px');
+          particle.style.fontSize = (14 + Math.random() * 16) + 'px';
+          particle.style.animationDelay = (Math.random() * 0.15) + 's';
+          particle.addEventListener('animationend', function () {
+            this.remove();
+          });
+          fireWrap.appendChild(particle);
+        }
+      });
+    })();
 
     // Swipe-down-to-dismiss on the grabber
     (function () {
